@@ -1,0 +1,32 @@
+import Joi from 'joi';
+import BaseDto from '../../common/dto/base.dto.js'
+
+
+class RegisterDto extends BaseDto {
+    static schema = Joi.object({
+        name: Joi
+            .string()
+            .trim()
+            .min(2)
+            .max(50)
+            .required(),
+        email: Joi
+            .string()
+            .trim()
+            .lowercase()
+            .required(),
+        password: Joi
+            .string()
+            .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[%&?_#=-])[A-Za-z\d%&?_#=-]{8,}$/)
+            .min(8)
+            .required()
+            .message("minimum 8 chars required"),
+        role: Joi
+            .string()
+            .required()
+            .valid('admin', 'user')
+            .default('user')
+    })
+}
+
+export default RegisterDto
