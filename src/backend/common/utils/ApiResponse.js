@@ -13,8 +13,8 @@ class ApiResponse {
             data
         })
     }
-    static noContent(res, message, data) {
-        return res.status(201).send()
+    static noContent(res) {
+        return res.status(204).send()
     }
 }
 

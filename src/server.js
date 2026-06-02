@@ -1,9 +1,10 @@
 import createApp from './app.js';
+import process from 'node:process'
 import connectDB from './backend/common/config/config';
 
 const connection = async () => {
     const port = import.meta.env.VITE_PORT || 3000;
-    const mongoUri = import.meta.env.VITE_MONGODB_URI ||'mongodb://localhost:27017/candy_todo'
+    const mongoUri = import.meta.env.VITE_MONGODB_URI || 'mongodb://localhost:27017/candy_todo'
 
     const app = createApp();
     app.listen(port, () => {
@@ -14,6 +15,6 @@ const connection = async () => {
 
 
 connection().catch(err => {
-    console.log(`Got an error while establishing a connection to server...`);
+    console.log(`Got an error while establishing a connection to server...,${err}`);
     process.exit(1)
 })

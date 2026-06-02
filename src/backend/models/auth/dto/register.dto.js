@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import BaseDto from '../../common/dto/base.dto.js'
+import BaseDto from '../../../common/dto/base.dto.js'
 
 
 class RegisterDto extends BaseDto {
@@ -12,15 +12,15 @@ class RegisterDto extends BaseDto {
             .required(),
         email: Joi
             .string()
-            .trim()
+            .email()
             .lowercase()
             .required(),
         password: Joi
             .string()
-            .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[%&?_#=-])[A-Za-z\d%&?_#=-]{8,}$/)
+            .pattern(/(?=.*[A-Z])(?=.*\d)/)
             .min(8)
             .required()
-            .message("minimum 8 chars required"),
+            .message("Password must contain at least one uppercase letter and one digit"),
         role: Joi
             .string()
             .required()

@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
-const connectDB = (mongoUri) => {
-    if(!mongoUri) throw new Error('No Uri Provided')
+const connectDB = async (mongoUri) => {
+    if (!mongoUri) throw new Error('No Uri Provided')
     const connection = await mongoose.connect(mongoUri);
 
+    console.log(`MongoDB Connected: ${connection.connection.host}`);
+    
     return connection;
 
 }
