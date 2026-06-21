@@ -3,9 +3,13 @@ import mongoose, { Mongoose } from 'mongoose';
 const todoSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
         minLength: 1,
         trim: true,
+        required: [true, "Title is required"],
+    },
+    discription: {
+        type: String,
+        default:"No Discription"
     },
     isCompleted: {
         type: Boolean,
@@ -14,19 +18,26 @@ const todoSchema = new mongoose.Schema({
     user_id: {
         id: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        required: [true, "UserId Required"],
     },
     priority: {
         type: String,
         enum: ['high', 'medium', 'low'],
         default: 'low',
     },
-    category: {
-        type: String,
-        minLength: 2,
-        maxLength: 60,
-        default: 'individual'
+    tags: {
+        type: [String],
+        default: [],
+        validate: {
+            validator: function (val) {
+                return val.length <= 10;
+            },
+            message: "Cannot exceed 10 tags"
+        }
+    },
+    dueDate: {
+        type: Date,
     }
-})
+}, {timestamps: true})
 
 export default mongoose.model('Todo', todoSchema)

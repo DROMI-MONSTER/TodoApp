@@ -7,10 +7,10 @@ class Login extends BaseDto {
         email: Joi.string().email().lowercase().required(),
         password: Joi
             .string()
-            .pattern(/(?=.*[A-Z])(?=.*\d)/)
             .min(8)
-            .required()
-            .message("Password must contain at least one uppercase letter and one digit"),
+            .message("Password must contain at least one uppercase letter and one digit")
+            .pattern(/(?=.*[A-Z])(?=.*\d)/)
+            .required(),
     })
 }
 
