@@ -21,13 +21,19 @@ const createTodo = async ({ title, description, user_id, priority, tags, dueDate
     return todoObj
 }
 
-/*
-create todo - post
-update todo - post
-delete todo - delete
-get todos - get
+const updateTodo = async (req, res) => {
+    const user = await User.findById(user_id)
+    if (!user) throw ApiError.unauthorized('User not exist')
 
- */
+    const valid
+}
+
+/*
+c -> create todo - post
+r -> get todos - get
+u -> update todo - post
+d -> delete todo - delete
+*/
 
 
 export {

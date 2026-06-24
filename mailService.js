@@ -6,8 +6,8 @@ async function main() {
         host: 'smtp-relay.brevo.com',
         port: 587,
         auth: {
-            user: "ad7ea9001@smtp-brevo.com",
-            pass: "bskgeJ5H2mxxMaj",
+            user: import.meta.VITE_SMTP_USER,
+            pass: import.meta.VITE_SMTP_PASS,
         }
     })
 
