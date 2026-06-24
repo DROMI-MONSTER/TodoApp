@@ -7,7 +7,7 @@ const todoSchema = new mongoose.Schema({
         trim: true,
         required: [true, "Title is required"],
     },
-    discription: {
+    description: {
         type: String,
         default:"No Discription"
     },
@@ -16,7 +16,7 @@ const todoSchema = new mongoose.Schema({
         default: false,
     },
     user_id: {
-        id: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: [true, "UserId Required"],
     },

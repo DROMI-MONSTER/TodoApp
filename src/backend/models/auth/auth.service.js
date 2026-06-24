@@ -31,7 +31,7 @@ const register = async ({ name, email, password, role }) => {
     } catch (err) {
         console.error("Failed to send verification email:", err.message);
     }
-    console.log(rawToken);
+
     const newUserObj = newUser.toObject();
     delete newUserObj.password;
     delete newUserObj.verificationToken;
