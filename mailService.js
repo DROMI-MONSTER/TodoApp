@@ -3,8 +3,8 @@ import nodemailer from 'nodemailer'
 async function main() {
     console.log("Setting up transporter...");
     const transporter = nodemailer.createTransport({
-        host: 'smtp-relay.brevo.com',
-        port: 587,
+        host: 'sandbox.smtp.mailtrap.io',
+        port: 2525,
         auth: {
             user: import.meta.VITE_SMTP_USER,
             pass: import.meta.VITE_SMTP_PASS,

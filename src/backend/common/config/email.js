@@ -1,9 +1,10 @@
 import nodemailer from "nodemailer"
-
+import "dotenv"
 
 const transporter = nodemailer.createTransport({
     host: process.env.VITE_SMTP_HOST,
     port: Number(process.env.VITE_SMTP_PORT) || 587,
+    secure: false,
     auth: {
         user: process.env.VITE_SMTP_USER,
         pass: process.env.VITE_SMTP_PASS,
@@ -25,7 +26,7 @@ const sendVerificationEmail = async (email, token) => {
         email,
         "Verify your email",
         `<h2>Welcome!</h2><p>Click <a href="${url}">here</a> to verify your email.</p>`,
-      );
+    );
 }
 
 const sendResetPasswordEmail = async (email, token) => {
@@ -34,7 +35,7 @@ const sendResetPasswordEmail = async (email, token) => {
         email,
         "Reset your password",
         `<h2>Password Reset</h2><p>Click <a href="${url}">here</a> to reset your password. This link expires in 15 minutes.</p>`,
-      );
+    );
 }
 
 

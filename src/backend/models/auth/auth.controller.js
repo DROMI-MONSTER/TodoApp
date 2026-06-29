@@ -46,7 +46,6 @@ const resetPassword = async (req, res) => {
 
 const getMe = async (req, res) => {
     const user = await authService.getMe(req.user.id);
-    console.log(req.user.id);
     ApiResponse.ok(res, "User Profile", user)
 }
 export {
